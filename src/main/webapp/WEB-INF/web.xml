@@ -6,17 +6,18 @@
          metadata-complete="false">
 
     <!-- Application Display Name -->
-    <display-name>Login Demo Application</display-name>
+    <display-name>Login Demo Application - Three-Tier Architecture</display-name>
     
     <!-- Application Description -->
     <description>
-        MVC Login Demo Application with SQL Server Database
+        Java Web Application with Three-Tier Architecture and MVC2 Pattern
+        Using vn.iotstar package structure
     </description>
 
     <!-- Welcome File List -->
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>login</welcome-file>
+        <welcome-file>views/login.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- Session Configuration -->
@@ -31,18 +32,18 @@
     <!-- Error Pages -->
     <error-page>
         <error-code>404</error-code>
-        <location>/error/404.jsp</location>
+        <location>/views/error/404.jsp</location>
     </error-page>
     
     <error-page>
         <error-code>500</error-code>
-        <location>/error/500.jsp</location>
+        <location>/views/error/500.jsp</location>
     </error-page>
 
     <!-- Character Encoding Filter -->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
-        <filter-class>com.login.logindemo.filter.CharacterEncodingFilter</filter-class>
+        <filter-class>vn.iotstar.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -54,111 +55,16 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- Servlet Mappings -->
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.LoginServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    
-    <!-- Forgot Password Servlet -->
-    <servlet>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.ForgotPasswordServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <url-pattern>/forgot-password</url-pattern>
-    </servlet-mapping>
-    
-    <!-- Logout Servlet -->
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.LogoutServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-    
-    <!-- Category Servlet -->
-    <servlet>
-        <servlet-name>CategoryServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.CategoryServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>CategoryServlet</servlet-name>
-        <url-pattern>/category</url-pattern>
-    </servlet-mapping>
-    
-    <!-- Register Servlet -->
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.RegisterServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
-    
-    <!-- Home Servlet -->
-    <servlet>
-        <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.HomeServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/home</url-pattern>
-    </servlet-mapping>
-    
-    <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
-    <!-- Product Servlet -->
-    <servlet>
-        <servlet-name>ProductServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.ProductServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ProductServlet</servlet-name>
-        <url-pattern>/product</url-pattern>
-    </servlet-mapping>
-
-    <!-- Profile Servlet -->
-    <servlet>
-        <servlet-name>ProfileServlet</servlet-name>
-        <servlet-class>com.login.logindemo.controller.ProfileServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ProfileServlet</servlet-name>
-        <url-pattern>/profile</url-pattern>
-    </servlet-mapping>
-
     <!-- Security Constraints for Protected Pages -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected Pages</web-resource-name>
-            <url-pattern>/welcome.jsp</url-pattern>
+            <url-pattern>/home</url-pattern>
+            <url-pattern>/waiting</url-pattern>
+            <url-pattern>/admin/*</url-pattern>
+            <url-pattern>/manager/*</url-pattern>
         </web-resource-collection>
         <!-- This will be handled by our custom authentication -->
     </security-constraint>
-
-    <!-- Context Listener for Application Lifecycle Management -->
-    <listener>
-        <listener-class>com.login.logindemo.config.ApplicationContextListener</listener-class>
-    </listener>
 
 </web-app>
