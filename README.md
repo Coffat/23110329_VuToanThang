@@ -222,5 +222,4 @@ src/main/webapp/
 ## 📞 **Liên hệ**
 - **Sinh viên**: Vũ Toàn Thắng
 - **MSSV**: 23110329
-- **Lớp**: DH23DT
 - **Email**: 23110329@student.hcmute.edu.vn
