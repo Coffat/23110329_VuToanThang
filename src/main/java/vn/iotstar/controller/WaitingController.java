@@ -36,7 +36,7 @@ public class WaitingController extends HttpServlet {
         // Redirect based on user role
         String contextPath = request.getContextPath();
         
-        switch (user.getRoleid()) {
+        switch (user.getRoleId()) {
             case 1:
                 // Admin role
                 response.sendRedirect(contextPath + "/admin/home");

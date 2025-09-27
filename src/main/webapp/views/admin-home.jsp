@@ -118,7 +118,16 @@
                     </p>
                 </div>
                 <div class="col-md-4 text-center">
-                    <i class="fas fa-user-shield" style="font-size: 5rem; opacity: 0.3;"></i>
+                    <c:choose>
+                        <c:when test="${not empty user.avatar}">
+                            <img src="${pageContext.request.contextPath}/${user.avatar}" 
+                                 alt="Avatar" class="rounded-circle" 
+                                 style="width: 80px; height: 80px; object-fit: cover; border: 3px solid rgba(255,255,255,0.3);">
+                        </c:when>
+                        <c:otherwise>
+                            <i class="fas fa-user-shield" style="font-size: 5rem; opacity: 0.3;"></i>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -150,81 +159,25 @@
             <div class="col-md-4">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-users-cog"></i>
+                        <i class="fas fa-user-cog"></i>
                     </div>
-                    <h4>Quản lý người dùng</h4>
-                    <p class="text-muted">Thêm, sửa, xóa và phân quyền cho người dùng trong hệ thống.</p>
-                    <button class="btn btn-outline-danger">Quản lý</button>
+                    <h4>Hồ sơ cá nhân</h4>
+                    <p class="text-muted">Cập nhật thông tin cá nhân và ảnh đại diện của bạn.</p>
+                    <a href="${pageContext.request.contextPath}/profile" class="btn btn-outline-danger">
+                        <i class="fas fa-user-edit"></i> Cập nhật hồ sơ
+                    </a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-sign-out-alt"></i>
                     </div>
-                    <h4>Thống kê hệ thống</h4>
-                    <p class="text-muted">Xem báo cáo chi tiết về hoạt động và hiệu suất hệ thống.</p>
-                    <button class="btn btn-outline-danger">Xem báo cáo</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <div class="feature-card text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h4>Cấu hình hệ thống</h4>
-                    <p class="text-muted">Thiết lập và cấu hình các tham số quan trọng của hệ thống.</p>
-                    <button class="btn btn-outline-danger">Cấu hình</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4>Bảo mật hệ thống</h4>
-                    <p class="text-muted">Quản lý bảo mật, quyền truy cập và kiểm soát hệ thống.</p>
-                    <button class="btn btn-outline-danger">Bảo mật</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h4>Quản lý dữ liệu</h4>
-                    <p class="text-muted">Sao lưu, khôi phục và quản lý cơ sở dữ liệu hệ thống.</p>
-                    <button class="btn btn-outline-danger">Quản lý</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Admin Actions -->
-        <div class="admin-card">
-            <h3 class="mb-3"><i class="fas fa-tools"></i> Công cụ quản trị</h3>
-            <div class="row">
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-danger w-100">
-                        <i class="fas fa-database"></i> Backup DB
-                    </button>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-warning w-100">
-                        <i class="fas fa-exclamation-triangle"></i> Logs hệ thống
-                    </button>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-info w-100">
-                        <i class="fas fa-shield-alt"></i> Bảo mật
-                    </button>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-success w-100">
-                        <i class="fas fa-sync-alt"></i> Cập nhật
-                    </button>
+                    <h4>Đăng xuất</h4>
+                    <p class="text-muted">Thoát khỏi tài khoản quản trị một cách an toàn.</p>
+                    <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-danger">
+                        <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                    </a>
                 </div>
             </div>
         </div>

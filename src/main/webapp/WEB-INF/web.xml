@@ -1,44 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0"
-         metadata-complete="false">
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
 
-    <!-- Application Display Name -->
-    <display-name>Login Demo Application - Three-Tier Architecture</display-name>
-    
-    <!-- Application Description -->
-    <description>
-        Java Web Application with Three-Tier Architecture and MVC2 Pattern
-        Using vn.iotstar package structure
-    </description>
+    <display-name>Login Demo Application</display-name>
+    <description>Java Web Application with Login System</description>
 
     <!-- Welcome File List -->
     <welcome-file-list>
-        <welcome-file>login</welcome-file>
-        <welcome-file>views/login.jsp</welcome-file>
+        <welcome-file>home</welcome-file>
     </welcome-file-list>
-
-    <!-- Session Configuration -->
-    <session-config>
-        <session-timeout>30</session-timeout> <!-- 30 minutes -->
-        <cookie-config>
-            <http-only>true</http-only>
-            <secure>false</secure> <!-- Set to true in production with HTTPS -->
-        </cookie-config>
-    </session-config>
-
-    <!-- Error Pages -->
-    <error-page>
-        <error-code>404</error-code>
-        <location>/views/error/404.jsp</location>
-    </error-page>
     
-    <error-page>
-        <error-code>500</error-code>
-        <location>/views/error/500.jsp</location>
-    </error-page>
+    <!-- Default Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
     <!-- Character Encoding Filter -->
     <filter>
@@ -55,16 +34,20 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- Security Constraints for Protected Pages -->
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Protected Pages</web-resource-name>
-            <url-pattern>/home</url-pattern>
-            <url-pattern>/waiting</url-pattern>
-            <url-pattern>/admin/*</url-pattern>
-            <url-pattern>/manager/*</url-pattern>
-        </web-resource-collection>
-        <!-- This will be handled by our custom authentication -->
-    </security-constraint>
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Error Pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/views/error/404.jsp</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/views/error/500.jsp</location>
+    </error-page>
 
 </web-app>

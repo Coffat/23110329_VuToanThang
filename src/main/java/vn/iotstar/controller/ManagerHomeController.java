@@ -34,7 +34,7 @@ public class ManagerHomeController extends HttpServlet {
         User user = (User) session.getAttribute("account");
         
         // Check if user has manager role
-        if (user.getRoleid() != 2) {
+        if (user.getRoleId() != 2) {
             response.sendRedirect(request.getContextPath() + "/home");
             return;
         }

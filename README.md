@@ -1,225 +1,174 @@
-# Java Web Application - Login & Category Management
+**👨‍💻 Tác giả:** Vũ Toàn Thắng - 23110329
 
-## Thông tin sinh viên
-- **Họ và tên**: Vũ Toàn Thắng
-- **MSSV**: 23110329
+## 🚀 Tính năng
 
-## Mô tả dự án
-Ứng dụng web quản lý người dùng và danh mục sử dụng kiến trúc 3 tầng (3-Tier Architecture) và mô hình MVC2. Hệ thống hỗ trợ đăng nhập, đăng ký, quên mật khẩu và quản lý CRUD danh mục.
+### 🔐 Hệ thống đăng nhập
+- Đăng nhập/Đăng ký tài khoản
+- Phân quyền 3 cấp: Admin, Manager, User
+- Quên mật khẩu và reset password
+- Ghi nhớ đăng nhập (Remember me)
 
-## Kiến trúc hệ thống
-- **Presentation Layer**: JSP, Servlet Controllers
-- **Business Logic Layer**: Service classes
-- **Data Access Layer**: DAO pattern with JDBC
-- **Database**: SQL Server with optimized indexes
+### 👤 Quản lý hồ sơ
+- Cập nhật thông tin cá nhân
+- Upload và quản lý ảnh đại diện
+- Giao diện responsive và thân thiện
 
-## Công nghệ sử dụng
-- **Backend**: Java 17, Servlet API, JSP
-- **Database**: SQL Server 2019+
-- **Server**: Apache Tomcat 11.0.10
-- **Build Tool**: Maven 3.9+
-- **Frontend**: Bootstrap 5, Font Awesome 6, JavaScript
-- **Architecture**: 3-Tier Architecture, MVC2 Pattern
+### 🏷️ Quản lý danh mục (Admin)
+- Thêm, sửa, xóa danh mục
+- Giao diện quản trị chuyên nghiệp
 
-## Tính năng chính
+### 🎨 Giao diện
+- Thiết kế hiện đại với Bootstrap 5
+- Responsive design cho mọi thiết bị
+- Animations và transitions mượt mà
+- Theme màu sắc nhất quán
 
-### 🔐 **Xác thực và Phân quyền**
-- ✅ Đăng nhập với validation
-- ✅ Đăng ký tài khoản mới
-- ✅ Quên mật khẩu (tạo mật khẩu mới tự động)
-- ✅ Session management và Remember Me
-- ✅ Role-based access control (Admin, Manager, User)
+## 🛠️ Công nghệ sử dụng
 
-### 📋 **Quản lý Danh mục (CRUD)**
-- ✅ Thêm danh mục mới
-- ✅ Xem danh sách tất cả danh mục
-- ✅ Sửa thông tin danh mục
-- ✅ Xóa danh mục
-- ✅ Quản lý icon Font Awesome
-- ✅ Phân quyền theo người tạo
+- **Backend:** Java Servlet, JSP
+- **Database:** SQL Server / MySQL
+- **Frontend:** Bootstrap 5, Font Awesome, CSS3
+- **Build Tool:** Maven
+- **Server:** Apache Tomcat
+- **Page Decoration:** SiteMesh 3
 
-### 🎨 **Giao diện và Trải nghiệm**
-- ✅ Responsive design với Bootstrap 5
-- ✅ Modern UI/UX với gradient và animations
-- ✅ Real-time form validation
-- ✅ Alert messages và notifications
-- ✅ Admin dashboard với navigation
+## 📋 Yêu cầu hệ thống
 
-### 🛠️ **Kỹ thuật**
-- ✅ Database connection pooling
-- ✅ Prepared statements (SQL injection prevention)
-- ✅ Input validation và sanitization
-- ✅ Exception handling
-- ✅ Logging và debugging
-
-## Cài đặt và chạy
-
-### Yêu cầu hệ thống
 - Java 17+
-- Apache Tomcat 11.0.10
-- SQL Server
-- Maven 3.9+
+- Apache Tomcat 11+
+- Maven 3.6+
+- SQL Server hoặc MySQL
+- IDE: IntelliJ IDEA (khuyến nghị)
 
-### Bước 1: Clone repository
+## 🚀 Cài đặt và chạy
+
+### 1. Clone repository
 ```bash
-git clone https://github.com/Coffat/23110329_VuToanThang_bai2.git
-cd 23110329_VuToanThang_bai2
+git clone <repository-url>
+cd 23110329_VuToanThang
 ```
 
-### Bước 2: Cấu hình database
-1. Tạo database `BaiTap2` trong SQL Server
-2. Chạy script `database/create_database.sql` để tạo bảng và dữ liệu mẫu
-3. Cập nhật thông tin kết nối trong `src/main/resources/database.properties`:
-   ```properties
-   db.url=jdbc:sqlserver://localhost:1433;databaseName=BaiTap2;encrypt=true;trustServerCertificate=true
-   db.username=sa
-   db.password=Admin123@
-   ```
+### 2. Cấu hình database
+- Tạo database từ file `database/create_database.sql`
+- Cập nhật thông tin kết nối trong `src/main/resources/database.properties`
 
-### Bước 3: Build và deploy
-
-#### Option 1: Sử dụng Maven Tomcat Plugin (Khuyến nghị)
-```bash
-# Chạy trực tiếp với Maven
-mvn clean compile
-mvn tomcat7:run
-
-# Truy cập: http://localhost:8080
-```
-
-#### Option 2: Deploy lên Tomcat Server
+### 3. Build và chạy
 ```bash
 # Build project
+mvn clean compile
+
+# Chạy với Tomcat Maven Plugin
+mvn tomcat7:run
+```
+
+### 4. Truy cập ứng dụng
+- URL: `http://localhost:8080/`
+- Tự động redirect đến trang home tương ứng với role
+
+## 👥 Tài khoản mặc định
+
+### Admin
+- **Username:** admin
+- **Password:** admin123
+- **Quyền:** Quản lý danh mục, toàn quyền hệ thống
+
+### Manager  
+- **Username:** manager
+- **Password:** manager123
+- **Quyền:** Quản lý cấp trung
+
+### User
+- **Username:** user
+- **Password:** user123
+- **Quyền:** Người dùng thường
+
+## 📁 Cấu trúc dự án
+
+```
+src/
+├── main/
+│   ├── java/vn/iotstar/
+│   │   ├── config/          # Cấu hình database
+│   │   ├── controller/      # Servlet controllers
+│   │   ├── dao/            # Data Access Objects
+│   │   ├── filter/         # Servlet filters
+│   │   ├── model/          # Java models
+│   │   └── service/        # Business logic
+│   ├── resources/
+│   │   └── database.properties
+│   └── webapp/
+│       ├── decorators/     # SiteMesh decorators
+│       ├── uploads/        # Thư mục upload files
+│       └── views/          # JSP pages
+└── database/
+    └── create_database.sql
+```
+
+## 🔧 Cấu hình
+
+### Database Properties
+```properties
+# src/main/resources/database.properties
+db.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+db.url=jdbc:sqlserver://localhost:1433;databaseName=CoffeeManagement
+db.username=your_username
+db.password=your_password
+```
+
+### Maven Configuration
+```xml
+<!-- pom.xml -->
+<properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <tomcat.version>11.0.10</tomcat.version>
+</properties>
+```
+
+## 🎯 Luồng hoạt động
+
+1. **Đăng nhập:** User đăng nhập → Kiểm tra role → Redirect đến trang tương ứng
+2. **Admin:** Quản lý danh mục + Cập nhật profile
+3. **Manager:** Cập nhật profile + Xem thông tin
+4. **User:** Cập nhật profile + Sử dụng hệ thống
+
+## 🎨 Giao diện
+
+- **Home Page:** Dashboard chính với thông tin user
+- **Admin Dashboard:** Giao diện quản trị với quản lý danh mục
+- **Manager Dashboard:** Giao diện quản lý cấp trung
+- **Profile Page:** Cập nhật thông tin cá nhân với upload avatar
+- **Login/Register:** Form đăng nhập/đăng ký hiện đại
+
+## 🔒 Bảo mật
+
+- Session management
+- Role-based access control
+- Input validation
+- SQL injection prevention
+- File upload security
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Bootstrap 5 grid system
+- Touch-friendly interface
+- Cross-browser compatibility
+
+## 🚀 Deployment
+
+### Production Build
+```bash
 mvn clean package
-
-# Copy WAR file vào Tomcat
-cp target/ROOT.war $TOMCAT_HOME/webapps/
-
-# Start Tomcat
-$TOMCAT_HOME/bin/startup.sh
+# File WAR sẽ được tạo trong target/ROOT.war
 ```
 
-### Bước 4: Truy cập ứng dụng
+### Tomcat Deployment
+1. Copy `target/ROOT.war` vào `webapps/` của Tomcat
+2. Start Tomcat server
+3. Truy cập ứng dụng qua domain/IP
 
-#### 🌐 **URLs chính** (Maven: `http://localhost:8080`)
-- **Trang đăng nhập**: `http://localhost:8080/login`
-- **Đăng ký**: `http://localhost:8080/register`
-- **Quên mật khẩu**: `http://localhost:8080/forgot-password`
-- **Trang chủ**: `http://localhost:8080/home`
 
-#### 🔑 **Admin Panel** (Chỉ Admin/Manager)
-- **Admin Dashboard**: `http://localhost:8080/admin/home`
-- **Quản lý Danh mục**: `http://localhost:8080/admin/category/list`
+---
 
-## 📊 **Cơ sở dữ liệu**
-
-### Bảng User
-| Field | Type | Description |
-|-------|------|-------------|
-| id | INT (PK) | User ID |
-| email | NVARCHAR(255) | Email (unique) |
-| username | NVARCHAR(100) | Username (unique) |
-| fullname | NVARCHAR(255) | Full name |
-| password | NVARCHAR(255) | Password |
-| avatar | NVARCHAR(500) | Avatar URL |
-| roleid | INT | Role (1=Admin, 2=Manager, 5=User) |
-| phone | NVARCHAR(20) | Phone number |
-| createddate | DATETIME | Created date |
-
-### Bảng Category
-| Field | Type | Description |
-|-------|------|-------------|
-| cate_id | INT (PK) | Category ID |
-| cate_name | NVARCHAR(255) | Category name |
-| icons | NVARCHAR(500) | Font Awesome icon class |
-| user_id | INT (FK) | Creator user ID |
-
-### Tài khoản mẫu
-| Username | Password | Role | Description |
-|----------|----------|------|-------------|
-| admin | 123456 | Admin | Full access |
-| manager | 123456 | Manager | Category management |
-| user | 123456 | User | Basic access |
-| test | 123456 | User | Test account |
-
-## 📝 **Cấu trúc dự án**
-
-```
-src/main/java/vn/iotstar/
-├── config/
-│   └── DBConnection.java
-├── controller/
-│   ├── LoginController.java
-│   ├── RegisterController.java
-│   ├── ForgotPasswordController.java
-│   ├── CategoryController.java
-│   └── CategoryDeleteController.java
-├── dao/
-│   ├── UserDao.java
-│   ├── CategoryDao.java
-│   └── impl/
-│       ├── UserDaoImpl.java
-│       └── CategoryDaoImpl.java
-├── service/
-│   ├── UserService.java
-│   ├── CategoryService.java
-│   └── impl/
-│       ├── UserServiceImpl.java
-│       └── CategoryServiceImpl.java
-└── model/
-    ├── User.java
-    └── Category.java
-
-src/main/webapp/
-├── views/
-│   ├── login.jsp
-│   ├── register.jsp
-│   ├── forgot-password.jsp
-│   ├── home.jsp
-│   ├── admin-home.jsp
-│   └── admin/
-│       └── category-list.jsp
-└── WEB-INF/
-    └── web.xml
-```
-
-## 🚀 **Hướng dẫn sử dụng**
-
-### 1. Đăng nhập hệ thống
-- Truy cập trang đăng nhập
-- Nhập username/password
-- Chọn "Ghi nhớ đăng nhập" nếu muốn
-
-### 2. Quên mật khẩu
-- Click "Quên mật khẩu?" tại trang login
-- Nhập email đã đăng ký
-- Hệ thống sẽ tạo mật khẩu mới 6 ký tự
-- Sử dụng mật khẩu mới để đăng nhập
-
-### 3. Quản lý danh mục (Admin/Manager)
-- Đăng nhập với tài khoản Admin hoặc Manager
-- Truy cập Admin Dashboard
-- Click "Quản lý danh mục"
-- Thực hiện các thao tác CRUD
-
-## 🔧 **Troubleshooting**
-
-### Lỗi kết nối database
-- Kiểm tra SQL Server đang chạy
-- Xác nhận thông tin kết nối trong `database.properties`
-- Kiểm tra firewall và port 1433
-
-### Lỗi 404 Not Found
-- Kiểm tra Tomcat đang chạy
-- Xác nhận URL mapping trong web.xml
-- Kiểm tra servlet annotations
-
-### Lỗi 500 Internal Server Error
-- Kiểm tra logs trong Tomcat
-- Xác nhận database connection
-- Kiểm tra exception stack trace
-
-## 📞 **Liên hệ**
-- **Sinh viên**: Vũ Toàn Thắng
-- **MSSV**: 23110329
-- **Email**: 23110329@student.hcmute.edu.vn
+⭐ **Nếu dự án hữu ích, hãy cho một star!** ⭐

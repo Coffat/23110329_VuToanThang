@@ -5,22 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manager Dashboard</title>
+    <title>Manager Dashboard - Coffee Management</title>
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
         body {
             background: linear-gradient(135deg, #17a2b8 0%, #28a745 100%);
             min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-        .main-content {
-            padding: 40px 0;
         }
         .manager-card {
             background: rgba(255, 255, 255, 0.95);
@@ -81,25 +78,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
-                <i class="fas fa-user-tie"></i> Manager Dashboard
-            </a>
-            <div class="navbar-nav ms-auto">
-                <span class="navbar-text me-3">
-                    <i class="fas fa-briefcase"></i> Xin chào, ${user.fullName}!
-                </span>
-                <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger btn-logout">
-                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container main-content">
+    <div class="container">
         <!-- Manager Info Card -->
         <div class="manager-info">
             <div class="row align-items-center">
@@ -118,7 +97,16 @@
                     </p>
                 </div>
                 <div class="col-md-4 text-center">
-                    <i class="fas fa-user-tie" style="font-size: 5rem; opacity: 0.3;"></i>
+                    <c:choose>
+                        <c:when test="${not empty user.avatar}">
+                            <img src="${pageContext.request.contextPath}/${user.avatar}" 
+                                 alt="Avatar" class="rounded-circle" 
+                                 style="width: 80px; height: 80px; object-fit: cover; border: 3px solid rgba(255,255,255,0.3);">
+                        </c:when>
+                        <c:otherwise>
+                            <i class="fas fa-user-tie" style="font-size: 5rem; opacity: 0.3;"></i>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -135,66 +123,34 @@
 
         <!-- Manager Features -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-user-cog"></i>
                     </div>
-                    <h4>Quản lý nhân viên</h4>
-                    <p class="text-muted">Theo dõi và quản lý thông tin nhân viên trong phòng ban.</p>
-                    <button class="btn btn-outline-info">Quản lý</button>
+                    <h4>Hồ sơ cá nhân</h4>
+                    <p class="text-muted">Cập nhật thông tin cá nhân và ảnh đại diện của bạn.</p>
+                    <a href="${pageContext.request.contextPath}/profile" class="btn btn-outline-info">
+                        <i class="fas fa-user-edit"></i> Cập nhật hồ sơ
+                    </a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
-                        <i class="fas fa-tasks"></i>
+                        <i class="fas fa-sign-out-alt"></i>
                     </div>
-                    <h4>Quản lý dự án</h4>
-                    <p class="text-muted">Theo dõi tiến độ và phân công công việc cho các dự án.</p>
-                    <button class="btn btn-outline-info">Xem dự án</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h4>Báo cáo</h4>
-                    <p class="text-muted">Tạo và xem các báo cáo về hiệu suất làm việc.</p>
-                    <button class="btn btn-outline-info">Tạo báo cáo</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Manager Actions -->
-        <div class="manager-card">
-            <h3 class="mb-3"><i class="fas fa-clipboard-list"></i> Công việc hàng ngày</h3>
-            <div class="row">
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-info w-100">
-                        <i class="fas fa-calendar-check"></i> Lịch họp
-                    </button>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-success w-100">
-                        <i class="fas fa-file-alt"></i> Phê duyệt
-                    </button>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-warning w-100">
-                        <i class="fas fa-bell"></i> Thông báo
-                    </button>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <button class="btn btn-primary w-100">
-                        <i class="fas fa-envelope"></i> Tin nhắn
-                    </button>
+                    <h4>Đăng xuất</h4>
+                    <p class="text-muted">Thoát khỏi tài khoản quản lý một cách an toàn.</p>
+                    <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-danger">
+                        <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-
+    
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package vn.iotstar.filter;
 
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -11,7 +10,7 @@ import java.io.IOException;
  * Character Encoding Filter
  * Sets UTF-8 encoding for all requests and responses
  */
-@WebFilter(urlPatterns = "/*")
+// @WebFilter(urlPatterns = "/*") // Temporarily disabled
 public class CharacterEncodingFilter implements Filter {
     
     private String encoding = "UTF-8";

@@ -108,6 +108,11 @@ public class User implements Serializable {
         this.roleid = roleid;
     }
     
+    // Alternative getter for consistency with JSP usage
+    public int getRoleId() {
+        return roleid;
+    }
+    
     public String getPhone() {
         return phone;
     }

@@ -34,7 +34,7 @@ public class AdminHomeController extends HttpServlet {
         User user = (User) session.getAttribute("account");
         
         // Check if user has admin role
-        if (user.getRoleid() != 1) {
+        if (user.getRoleId() != 1) {
             response.sendRedirect(request.getContextPath() + "/home");
             return;
         }

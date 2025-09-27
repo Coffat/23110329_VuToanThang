@@ -62,6 +62,15 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+        
+        <!-- SiteMesh 3 for page decoration -->
+        <dependency>
+            <groupId>org.sitemesh</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        
+        <!-- File upload is handled by Jakarta Servlet API built-in multipart support -->
 
     </dependencies>
 

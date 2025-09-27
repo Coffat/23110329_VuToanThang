@@ -159,6 +159,68 @@ public class UserDaoImpl implements UserDao {
         return false;
     }
     
+    @Override
+    public User getUserById(int id) {
+        String sql = "SELECT * FROM [User] WHERE id = ?";
+        
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                return mapResultSetToUser(resultSet);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+    
+    @Override
+    public boolean updateProfile(User user) {
+        String sql = "UPDATE [User] SET fullname = ?, phone = ? WHERE id = ?";
+        
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            
+            statement.setString(1, user.getFullName());
+            statement.setString(2, user.getPhone());
+            statement.setInt(3, user.getId());
+            
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean updateAvatar(int userId, String avatarPath) {
+        String sql = "UPDATE [User] SET avatar = ? WHERE id = ?";
+        
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            
+            statement.setString(1, avatarPath);
+            statement.setInt(2, userId);
+            
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
+    
     
     /**
      * Map ResultSet to User object

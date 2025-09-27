@@ -35,7 +35,8 @@ public class LoginController extends HttpServlet {
             return;
         }
         
-        // Check if user has remember me cookie
+        // Check if user has remember me cookie (commented out for testing)
+        /*
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -52,6 +53,7 @@ public class LoginController extends HttpServlet {
                 }
             }
         }
+        */
         
         // Check for reset password success message
         if (session != null && session.getAttribute("resetSuccess") != null) {
