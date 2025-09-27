@@ -3,7 +3,6 @@
 ## Thông tin sinh viên
 - **Họ và tên**: Vũ Toàn Thắng
 - **MSSV**: 23110329
-- **Lớp**: DH23DT
 
 ## Mô tả dự án
 Ứng dụng web quản lý người dùng và danh mục sử dụng kiến trúc 3 tầng (3-Tier Architecture) và mô hình MVC2. Hệ thống hỗ trợ đăng nhập, đăng ký, quên mật khẩu và quản lý CRUD danh mục.
